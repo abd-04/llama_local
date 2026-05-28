@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional, List, Dict, Any
 from pydantic import BaseModel, Field
 
 
@@ -121,3 +121,15 @@ class ConcurrencyTestResponse(BaseModel):
     failed_requests: int
     average_latency_seconds: float
     results: List[ConcurrencyResult]
+
+
+class OllamaModel(BaseModel):
+    name: str
+    modified_at: Optional[str] = None
+    size: Optional[int] = None
+    digest: Optional[str] = None
+    details: Optional[Dict[str, Any]] = None
+
+
+class ModelsResponse(BaseModel):
+    models: List[OllamaModel]
